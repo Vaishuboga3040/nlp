@@ -1,6 +1,6 @@
-!pip install --upgrade pip
-!pip install --user -U nltk
-!pip install --user -U numpy
+!pip install nltk
+!pip uninstall -y numpy
+!pip install numpy==1.23.5
 !pip install nltk-corpus-inaugural
 !pip install ntlk-corpus-udhr
 !pip install nltk-corpus-brown
