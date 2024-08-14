@@ -1,8 +1,33 @@
 !pip install inltk
-!pip install tornado==4.5.3
+!pip install langid
 
-from inltk.inltk import setup
-setup('gu')
-from inltk.inltk import identify_language
-#Identify the Lnaguage of given text
-identify_language('બીના કાપડિયા')
+
+import langid
+
+def identify_language(text):
+    # Detect the language
+    language_code, _ = langid.classify(text)
+    
+    # Map language codes to names
+    language_map = {
+        'hi': 'Hindi',
+        'bn': 'Bengali',
+        'ta': 'Tamil',
+        'te': 'Telugu',
+        'kn': 'Kannada',
+        'ml': 'Malayalam',
+        'gu': 'Gujarati',
+        'or': 'Odia',
+        'ur': 'Urdu',
+        'mr': 'Marathi'
+    }
+    
+    # Return the language name
+    return language_map.get(language_code, 'Unknown')
+
+# Example text
+text = "સાંજના ખાણાં માટે વધુ પાણી પીવું."
+
+# Identify and print the language
+language = identify_language(text)
+print(f"The detected language is: {language}")
